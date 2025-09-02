@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccessPolicies version="1.0">
+<Meta>
+    <Sector>Financial</Sector>
+    <Timezone>Europe/London</Timezone>
+    <Definitions>
+      <StandardBusinessHours>Mon-Fri 08:00-18:00 BST</StandardBusinessHours>
+      <ExtendedBusinessHours>Mon-Sat 07:00-19:00 BST</ExtendedBusinessHours>
+      <Always>24/7</Always>
+      <OutsideWindowDefault>Block</OutsideWindowDefault>
+    </Definitions>
+    <RegisteredLocations>
+      <Location name="HOME" ip="203.0.113.10"/>
+      <Location name="LONDON_OFFICE" ip="198.51.100.5"/>
+    </RegisteredLocations>
+    <RegisteredDevices>
+      <Device>DEV-HOME-PC</Device>
+      <Device>DEV-OFFICE-PC</Device>
+    </RegisteredDevices>
+    <UnregisteredDeviceRule>
+      <ApprovalRequired>true</ApprovalRequired>
+      <ApprovalBy>Manager</ApprovalBy>
+      <IfApprovedPermission>ReadOnly</IfApprovedPermission>
+    </UnregisteredDeviceRule>
+  </Meta>
+
+  <!-- Manager Policies -->
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Create</Operation>
+    <Resource>Internal Files</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>3</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Read</Operation>
+    <Resource>Internal Files</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>5</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Read</Operation>
+    <Resource>Sensitive Files</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>6</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Write</Operation>
+    <Resource>Internal Files</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>3</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Approve</Operation>
+    <Resource>Pending Requests</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>6</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <Constraint>CannotSelfApprove</Constraint>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Write</Operation>
+    <Resource>Sensitive Files</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>8</RiskScore>
+    <TimeWindow>StandardBusinessHours</TimeWindow>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Delete</Operation>
+    <Resource>Internal Files</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>3</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Delete</Operation>
+    <Resource>Sensitive Files</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>9</RiskScore>
+    <TimeWindow>StandardBusinessHours</TimeWindow>
+  </Policy>
+
+  <Policy>
+    <Role>Manager</Role>
+    <Operation>Export</Operation>
+    <Resource>Any</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>10</RiskScore>
+    <TimeWindow>Always</TimeWindow>
+  </Policy>
+</AccessPolicies>

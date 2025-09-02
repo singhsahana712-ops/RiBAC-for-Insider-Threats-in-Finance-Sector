@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccessPolicies version="1.0">
+<Meta>
+    <Sector>Financial</Sector>
+    <Timezone>Europe/London</Timezone>
+    <Definitions>
+      <StandardBusinessHours>Mon-Fri 08:00-18:00 BST</StandardBusinessHours>
+      <ExtendedBusinessHours>Mon-Sat 07:00-19:00 BST</ExtendedBusinessHours>
+      <Always>24/7</Always>
+      <OutsideWindowDefault>Block</OutsideWindowDefault>
+    </Definitions>
+    <RegisteredLocations>
+      <Location name="HOME" ip="203.0.113.10"/>
+      <Location name="LONDON_OFFICE" ip="198.51.100.5"/>
+    </RegisteredLocations>
+    <RegisteredDevices>
+      <Device>DEV-HOME-PC</Device>
+      <Device>DEV-OFFICE-PC</Device>
+    </RegisteredDevices>
+    <UnregisteredDeviceRule>
+      <ApprovalRequired>true</ApprovalRequired>
+      <ApprovalBy>Manager</ApprovalBy>
+      <IfApprovedPermission>ReadOnly</IfApprovedPermission>
+    </UnregisteredDeviceRule>
+  </Meta>
+
+  <!-- IT Admin Policies -->
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Create</Operation>
+    <Resource>Business Data</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>9</RiskScore>
+    <TimeWindow>Always</TimeWindow>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Read</Operation>
+    <Resource>System Logs</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>5</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>Always</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Read</Operation>
+    <Resource>Server Configurations</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>5</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>Always</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Write</Operation>
+    <Resource>Server Configurations</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>3</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low</RiskAllowed>
+      <TimeWindow>Always</TimeWindow>
+      <AdditionalCondition>OutsideStandardHoursTriggerAlert</AdditionalCondition>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Write</Operation>
+    <Resource>High-Privilege: patch_server</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>4</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible</RiskAllowed>
+      <RequiresChangeContext>true</RequiresChangeContext>
+      <TimeWindow>Always</TimeWindow>
+      <AdditionalCondition>OutsideMaintenanceWindowRequiresSchedulingOrApproval</AdditionalCondition>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Delete</Operation>
+    <Resource>System Logs</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>8</RiskScore>
+    <TimeWindow>Always</TimeWindow>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Delete</Operation>
+    <Resource>Old Server Configurations</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>2</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible</RiskAllowed>
+      <TimeWindow>Always</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Export</Operation>
+    <Resource>System Logs</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>10</RiskScore>
+    <TimeWindow>Always</TimeWindow>
+  </Policy>
+
+  <Policy>
+    <Role>IT Admin</Role>
+    <Operation>Export</Operation>
+    <Resource>Business Data</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>10</RiskScore>
+    <TimeWindow>Always</TimeWindow>
+  </Policy>
+</AccessPolicies>

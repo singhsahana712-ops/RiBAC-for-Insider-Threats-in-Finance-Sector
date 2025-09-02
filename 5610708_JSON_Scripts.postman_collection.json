@@ -1,0 +1,1621 @@
+{
+	"info": {
+		"_postman_id": "fd3ba48b-d166-402b-95e8-662b7a13f116",
+		"name": "5610708_JSON_Scripts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31915298"
+	},
+	"item": [
+		{
+			"name": "Login - IT Admin (STD)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });",
+							"pm.test('Store IT admin token', function(){ var t = pm.response.json().token; pm.expect(t).to.exist; pm.collectionVariables.set('auth_admin', 'Bearer ' + t); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"itadmin@example.com\",\n  \"password\": \"ITAdminPass123\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Manager (STD)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });",
+							"pm.test('Store Manager token', function(){ var t = pm.response.json().token; pm.expect(t).to.exist; pm.collectionVariables.set('auth_mgr', 'Bearer ' + t); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"manager@example.com\",\n  \"password\": \"ManagerPass123\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - Finance (STD)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });",
+							"pm.test('Store Finance token', function(){ var t = pm.response.json().token; pm.expect(t).to.exist; pm.collectionVariables.set('auth_fin', 'Bearer ' + t); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"finance@example.com\",\n  \"password\": \"FinancePass123\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Login - IT Auditor (EXT)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });",
+							"pm.test('Store Auditor token', function(){ var t = pm.response.json().token; pm.expect(t).to.exist; pm.collectionVariables.set('auth_aud', 'Bearer ' + t); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"username\": \"auditor@example.com\",\n  \"password\": \"AuditorPass123\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/login",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-1 system_event_logs read STD LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-2 production_server_config read STD LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"production_server_config\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-3 production_server_config write STD LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"production_server_config\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-4 system_event_logs delete STD LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"delete\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-5 system_event_logs export EXT LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"export\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-6 customer_database export EXT LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"export\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-7 customer_database create STD LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"create\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "IA-8 system_event_logs read STD LONDON_OFFICE DEV-BYOD-01 NeedsApproval (RO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 202', function(){ pm.response.to.have.status(202); });",
+							"pm.test('Capture req_id for IA-8', function(){ var j=pm.response.json(); pm.collectionVariables.set('req_IA8', j.request_id); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_admin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-BYOD-01\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-1 employee_achievements.docx create STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"create\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-2 employee_achievements.docx read STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-3 client_financials_q3.xlsx read STD LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"client_financials_q3.xlsx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-4 employee_achievements.docx write STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-5 client_financials_q3.xlsx write STD LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"client_financials_q3.xlsx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-6 employee_achievements.docx delete STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"delete\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-7 client_financials_q3.xlsx delete EXT LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"delete\",\n  \"resource_id\": \"client_financials_q3.xlsx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-8 employee_achievements.docx read EXT LONDON_OFFICE DEV-BYOD-01 NeedsApproval (RO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 202', function(){ pm.response.to.have.status(202); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-BYOD-01\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-9a Approve IA-8 (Manager approves Admin BYOD)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request_id\": \"{{req_IA8}}\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/approve",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"approve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-9b Seed Manager self BYOD NeedsApproval",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 202', function(){ pm.response.to.have.status(202); });",
+							"pm.test('Capture req_id for Manager self', function(){ var j=pm.response.json(); pm.collectionVariables.set('req_MSELF', j.request_id); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-BYOD-01\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "M-9c Manager self-approval should be blocked",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_mgr}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"request_id\": \"{{req_MSELF}}\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/approve",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"approve"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-1 customer_database read STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-2 customer_database write STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-3 customer_database read EXT OTHER_SITE DEV-OFFICE-PC NeedsApproval (RO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 202', function(){ pm.response.to.have.status(202); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"203.0.113.200\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-4 customer_database write STD LONDON_OFFICE DEV-BYOD-01 NeedsApproval (RO)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 202', function(){ pm.response.to.have.status(202); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-BYOD-01\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-5 vendor_payments.csv read STD LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"vendor_payments.csv\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-6 vendor_payments.csv write EXT LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"vendor_payments.csv\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-7 employee_achievements.docx export STD LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"export\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "F-8 client_financials_q3.xlsx read STD LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_fin}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"client_financials_q3.xlsx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-1 system_event_logs read STD LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-2 database_error_logs read EXT HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"database_error_logs\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-3 audit_dept_findings_q3.pdf read STD HOME DEV-HOME-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"audit_dept_findings_q3.pdf\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-4 system_event_logs read EXT LONDON_OFFICE DEV-OFFICE-PC Allow",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 200', function(){ pm.response.to.have.status(200); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-5 customer_database export STD HOME DEV-HOME-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"export\",\n  \"resource_id\": \"customer_database\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-6 employee_achievements.docx write STD HOME DEV-HOME-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"write\",\n  \"resource_id\": \"employee_achievements.docx\",\n  \"client_ip\": \"203.0.113.10\",\n  \"device_id\": \"DEV-HOME-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-7 system_event_logs delete STD LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"delete\",\n  \"resource_id\": \"system_event_logs\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-07T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "A-8 client_financials_q3.xlsx read EXT LONDON_OFFICE DEV-OFFICE-PC Deny",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.test('Status is 403', function(){ pm.response.to.have.status(403); });"
+						]
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					},
+					{
+						"key": "Authorization",
+						"value": "{{auth_aud}}"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"action_id\": \"read\",\n  \"resource_id\": \"client_financials_q3.xlsx\",\n  \"client_ip\": \"198.51.100.5\",\n  \"device_id\": \"DEV-OFFICE-PC\",\n  \"test_at\": \"2025-05-10T10:00:00+01:00\"\n}"
+				},
+				"url": {
+					"raw": "{{baseUrl}}/access",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"access"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://127.0.0.1:5000"
+		},
+		{
+			"key": "auth_admin",
+			"value": ""
+		},
+		{
+			"key": "auth_mgr",
+			"value": ""
+		},
+		{
+			"key": "auth_fin",
+			"value": ""
+		},
+		{
+			"key": "auth_aud",
+			"value": ""
+		}
+	]
+}

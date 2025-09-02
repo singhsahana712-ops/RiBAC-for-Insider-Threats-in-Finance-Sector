@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AccessPolicies version="1.0">
+<Meta>
+    <Sector>Financial</Sector>
+    <Timezone>Europe/London</Timezone>
+    <Definitions>
+      <StandardBusinessHours>Mon-Fri 08:00-18:00 BST</StandardBusinessHours>
+      <ExtendedBusinessHours>Mon-Sat 07:00-19:00 BST</ExtendedBusinessHours>
+      <Always>24/7</Always>
+      <OutsideWindowDefault>Block</OutsideWindowDefault>
+    </Definitions>
+    <RegisteredLocations>
+      <Location name="HOME" ip="203.0.113.10"/>
+      <Location name="LONDON_OFFICE" ip="198.51.100.5"/>
+    </RegisteredLocations>
+    <RegisteredDevices>
+      <Device>DEV-HOME-PC</Device>
+      <Device>DEV-OFFICE-PC</Device>
+    </RegisteredDevices>
+    <UnregisteredDeviceRule>
+      <ApprovalRequired>true</ApprovalRequired>
+      <ApprovalBy>Manager</ApprovalBy>
+      <IfApprovedPermission>ReadOnly</IfApprovedPermission>
+    </UnregisteredDeviceRule>
+  </Meta>
+
+  <!-- Finance Employee Policies -->
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Create</Operation>
+    <Resource>Financial Data</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>4</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low</RiskAllowed>
+      <BehavioralLimits>must_not_exceed</BehavioralLimits>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Create</Operation>
+    <Resource>Customer Accounts</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>4</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low</RiskAllowed>
+      <BehavioralLimits>must_not_exceed</BehavioralLimits>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Read</Operation>
+    <Resource>Financial Data</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>5</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Read</Operation>
+    <Resource>Customer Accounts</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>5</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Read</Operation>
+    <Resource>Vendor Status</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Medium</RiskLevel>
+    <RiskScore>5</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low,medium</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Write</Operation>
+    <Resource>Financial Data</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>4</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Write</Operation>
+    <Resource>Vendor Status</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>3</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible,low</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Delete</Operation>
+    <Resource>Draft Financial Data</Resource>
+    <Decision>Allow</Decision>
+    <RiskLevel>Low</RiskLevel>
+    <RiskScore>3</RiskScore>
+    <Conditions>
+      <RiskAllowed>negligible</RiskAllowed>
+      <TimeWindow>StandardBusinessHours</TimeWindow>
+      <LocationControl>
+        <AllowedDevices>
+          <Device>DEV-HOME-PC</Device>
+          <Device>DEV-OFFICE-PC</Device>
+        </AllowedDevices>
+        <OtherDevices>
+          <ApprovalRequired>true</ApprovalRequired>
+          <ApprovalBy>Manager</ApprovalBy>
+          <GrantedPermission>ReadOnly</GrantedPermission>
+        </OtherDevices>
+      </LocationControl>
+    </Conditions>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Delete</Operation>
+    <Resource>Finalized Financial Records</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>9</RiskScore>
+    <TimeWindow>StandardBusinessHours</TimeWindow>
+  </Policy>
+
+  <Policy>
+    <Role>Finance Employee</Role>
+    <Operation>Export</Operation>
+    <Resource>Any</Resource>
+    <Decision>Deny</Decision>
+    <RiskLevel>High</RiskLevel>
+    <RiskScore>10</RiskScore>
+    <TimeWindow>Always</TimeWindow>
+  </Policy>
+</AccessPolicies>

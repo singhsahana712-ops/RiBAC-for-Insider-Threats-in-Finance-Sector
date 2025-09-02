@@ -1,0 +1,56 @@
+PREREQUISITES
+==============
+
+Supported Platforms:
+- Windows 10/11
+- macOS (Intel/Apple Silicon)
+- Ubuntu 20.04+
+
+Required Software:
+- Python 3.9+ (Python 3.11 recommended)
+- pip (Python package manager)
+- Virtualenv (via python -m venv)
+- tzdata (Python package) for timezone correctness
+- backports.zoneinfo (only if using Python < 3.9)
+- Optional: Postman (to import collection and test endpoints)
+- Optional: curl (for quick terminal tests)
+
+Install Instructions:
+---------------------
+1. Create and activate a virtual environment:
+   python -m venv .venv
+   # macOS/Linux
+   source .venv/bin/activate
+   # Windows
+   .venv\Scripts\activate
+
+2. Install dependencies:
+   pip install flask tzdata
+   # If Python < 3.9:
+   pip install backports.zoneinfo
+
+Network & Ports:
+----------------
+- Flask starts by default on http://127.0.0.1:5000
+
+Timezone:
+---------
+- Business hours assume Europe/London time zone.
+- STD = Mon–Fri 08:00–18:00
+- EXT = Mon–Sat 07:00–19:00
+- Install tzdata to avoid timezone warnings.
+
+Files to Run:
+-------------
+- RiBAC Simulator.py (main API server)
+- IT_Admin.xml, Manager.xml, Finance_Employee.xml, IT_Auditor.xml (policies)
+- 5610708_JSON_Scripts.postman_collection.json (Postman tests)
+
+Checklist:
+----------
+- [ ] Confirm Python version ≥ 3.9 (python --version)
+- [ ] Virtual environment active
+- [ ] pip install flask tzdata successful
+- [ ] Run server: python "RiBAC Simulator.py"
+- [ ] Postman can run /login, /access, /approve successfully
+
